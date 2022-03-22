@@ -96,7 +96,12 @@ api = "0.6"
     version = "0.3.2"
 
   [[order.group]]
+    id = "paketo-buildpacks/node-start"
+    version = "0.7.1"
+
+  [[order.group]]
     id = "paketo-buildpacks/npm-start"
+    optional = true
     version = "0.8.0"
 
   [[order.group]]

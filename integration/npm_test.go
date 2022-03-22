@@ -68,6 +68,7 @@ func testNPM(t *testing.T, context spec.G, it spec.S) {
 			Expect(logs).To(ContainLines(ContainSubstring("Node Engine Buildpack")))
 			Expect(logs).To(ContainLines(ContainSubstring("NPM Install Buildpack")))
 			Expect(logs).To(ContainLines(ContainSubstring("Node Module Bill of Materials Generator Buildpack")))
+			Expect(logs).To(ContainLines(ContainSubstring("Node Start Buildpack")))
 			Expect(logs).To(ContainLines(ContainSubstring("NPM Start Buildpack")))
 			Expect(logs).NotTo(ContainLines(ContainSubstring("Procfile Buildpack")))
 			Expect(logs).NotTo(ContainLines(ContainSubstring("Environment Variables Buildpack")))
@@ -125,14 +126,15 @@ func testNPM(t *testing.T, context spec.G, it spec.S) {
 				Expect(logs).To(ContainLines(ContainSubstring("Node Engine Buildpack")))
 				Expect(logs).To(ContainLines(ContainSubstring("NPM Install Buildpack")))
 				Expect(logs).To(ContainLines(ContainSubstring("Node Module Bill of Materials Generator Buildpack")))
+				Expect(logs).To(ContainLines(ContainSubstring("Node Start Buildpack")))
 				Expect(logs).To(ContainLines(ContainSubstring("NPM Start Buildpack")))
 				Expect(logs).To(ContainLines(ContainSubstring("Procfile Buildpack")))
 				Expect(logs).To(ContainLines(ContainSubstring("Environment Variables Buildpack")))
 				Expect(logs).To(ContainLines(ContainSubstring("Image Labels Buildpack")))
 				Expect(logs).To(ContainLines(ContainSubstring("Node Run Script")))
 
-				Expect(image.Buildpacks[8].Key).To(Equal("paketo-buildpacks/environment-variables"))
-				Expect(image.Buildpacks[8].Layers["environment-variables"].Metadata["variables"]).To(Equal(map[string]interface{}{"SOME_VARIABLE": "some-value"}))
+				Expect(image.Buildpacks[9].Key).To(Equal("paketo-buildpacks/environment-variables"))
+				Expect(image.Buildpacks[9].Layers["environment-variables"].Metadata["variables"]).To(Equal(map[string]interface{}{"SOME_VARIABLE": "some-value"}))
 				Expect(image.Labels["some-label"]).To(Equal("some-value"))
 				Expect(image.Buildpacks[4].Key).To(Equal("paketo-buildpacks/node-module-bom"))
 
@@ -210,6 +212,7 @@ func testNPM(t *testing.T, context spec.G, it spec.S) {
 				Expect(logs).To(ContainLines(ContainSubstring("Node Engine Buildpack")))
 				Expect(logs).To(ContainLines(ContainSubstring("NPM Install Buildpack")))
 				Expect(logs).To(ContainLines(ContainSubstring("Node Module Bill of Materials Generator Buildpack")))
+				Expect(logs).To(ContainLines(ContainSubstring("Node Start Buildpack")))
 				Expect(logs).To(ContainLines(ContainSubstring("NPM Start Buildpack")))
 				Expect(image.Buildpacks[3].Key).To(Equal("paketo-buildpacks/node-module-bom"))
 
